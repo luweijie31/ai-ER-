@@ -21,7 +21,7 @@
 支持两种生成模式：
 - **本地解析**：直接解析 SQL/DBML，快速生成，无需 API Key
 - **AI 分析**：将 SQL 发送给 DeepSeek，自动推断关系基数（1:1 / 1:N / M:N）并翻译为中文标签
-
+项目体验网站：https://luweijie31.github.io/ai-ER-/#faq
 ---
 
 ## 🚀 本地运行
