@@ -222,8 +222,15 @@ const generateChenModelData = (
 
     // 边标签来自解析器推断出的两端基数，缺省 N:1（DBML `>` / SQL FK 的隐含语义）。
     // 1:1（DBML `-`、或 FK 列为单列 PK / UNIQUE 的推断结果）会在两端都标 '1'。
-    const fromLabel = rel.fromCardinality ?? 'N';
-    const toLabel = rel.toCardinality ?? '1';
+   // 多对多关系显示为 M:N（而非 N:N），更符合学术惯例。
+    const fromCard = rel.fromCardinality ?? 'N';
+    const toCard = rel.toCardinality ?? '1';
+    let fromLabel = fromCard;
+    let toLabel = toCard;
+    if (fromCard === 'N' && toCard === 'N') {
+      fromLabel = 'M';
+      toLabel = 'N';
+    }
 
     // Connect source entity (the one with the FK, 'many' side) to relationship
     edges.push({
