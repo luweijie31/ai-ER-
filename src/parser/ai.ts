@@ -39,8 +39,8 @@ const SYSTEM_PROMPT = `你是一个数据库建模专家。用户会给你一段
       "from": "来源中文表名",
       "to": "目标中文表名",
       "label": "语义化中文关系动词（如：属于、包含、撰写、管理）",
-      "fromCardinality": "1"或"N",
-      "toCardinality": "1"或"N"
+      "fromCardinality": "1"或"N"或"M",
+      "toCardinality": "1"或"N"或"M"
     }
   ]
 }
@@ -120,8 +120,8 @@ export async function parseWithAI(
     from?: string;
     to?: string;
     label?: string;
-    fromCardinality?: "1" | "N";
-    toCardinality?: "1" | "N";
+    fromCardinality?: "1" | "N" | "M";
+    toCardinality?: "1" | "N" | "M";
   }) => ({
     from: r.from ?? "",
     to: r.to ?? "",
